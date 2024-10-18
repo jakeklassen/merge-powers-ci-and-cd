@@ -1,0 +1,18 @@
+name: "Pass/Fail"
+
+on:
+  pull_request:
+    types: [edited, opened, labeled]
+
+jobs:
+  pass-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail 50% of the time
+        run: |
+          if [ $((RANDOM % 2)) -eq 0 ]; then
+            echo "Failing"
+            exit 1
+          else
+            echo "Passing"
+          fi
