@@ -2,8 +2,8 @@ name: "Pass/Fail"
 
 on:
   push:
-    branches:
-      - "!main"
+    branches-ignore:
+      - main
   pull_request:
     types: [edited, opened, labeled]
 
