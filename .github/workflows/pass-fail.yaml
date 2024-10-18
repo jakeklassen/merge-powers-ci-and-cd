@@ -9,6 +9,7 @@ on:
 
 jobs:
   pass-fail:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Fail 50% of the time
