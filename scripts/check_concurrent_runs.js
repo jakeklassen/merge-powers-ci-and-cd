@@ -1,3 +1,4 @@
+// https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28
 async function main() {
 	// Get repo and workflow id from args
 	const repo = process.argv[2];
