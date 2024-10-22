@@ -19,3 +19,10 @@ jobs:
           else
             echo "Passing"
           fi
+
+  # Always passing to check how it effects the workflow run
+  pass:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pass
+        run: echo "Passing"
