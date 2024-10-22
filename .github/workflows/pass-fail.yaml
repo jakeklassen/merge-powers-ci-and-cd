@@ -1,4 +1,4 @@
-name: "Pass/Fail"
+name: Pass or Fail
 
 on:
   push:
