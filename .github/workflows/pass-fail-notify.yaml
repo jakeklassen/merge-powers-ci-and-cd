@@ -6,11 +6,11 @@ on:
     types: [completed]
 
 jobs:
-  notify_slack:
+  notify_slack_bot:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Send Slack notification if failed
+      - name: Send Slack notification via bot if failed
         if: ${{ github.event.workflow_run.conclusion == 'failure' }}
         uses: slackapi/slack-github-action@v1.27.0
         with:
@@ -18,3 +18,15 @@ jobs:
           slack-message: "Workflow `${{ github.workflow }}` failed on `${{ github.repository }}`."
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  notify_slack_webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Send Slack notification via webhook if failed
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_MESSAGE: "Workflow `${{ github.workflow }}` failed on `${{ github.repository }}`."
+          SLACK_COLOR: "#FFA500"
